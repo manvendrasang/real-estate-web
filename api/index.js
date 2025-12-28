@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import userRouter from './routes/user.routes.js';
 
 
 const app = express();
@@ -17,3 +18,9 @@ mongoose.connect(process.env.MONGO)
     .catch((error) => {
         console.error('Error connecting to MongoDB:', error);
 });
+
+app.use('/api/user', userRouter);
+
+// app.get("/", (req, res) => {
+//     res.send("Welcome to the User API");
+// });
